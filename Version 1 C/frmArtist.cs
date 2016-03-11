@@ -15,65 +15,77 @@ namespace Version_1_C
             InitializeComponent();
         }
 
-        private clsArtistList theArtistList;
-        private clsWorksList theWorksList;
-        private byte sortOrder; // 0 = Name, 1 = Date
+        //private clsArtistList _ArtistList;
+        private clsWorksList _WorksList;
+        private byte sortOrder; // 0 = Name, 1 = Date maybe this should be _SortOrder...
+        //clsWorksList _SortOrder;// not sure if this is right.
+        private  clsArtist _Artist;//is this menat to be clsartist?
 
-        private void UpdateDisplay()
+       
+        private void updateDisplay()
         {
             txtName.Enabled = txtName.Text == "";
             if (sortOrder == 0)
             {
-                theWorksList.SortByName();
+                _WorksList.SortByName();
                 rbByName.Checked = true;
             }
             else
             {
-                theWorksList.SortByDate();
+                _WorksList.SortByDate();
                 rbByDate.Checked = true;
             }
 
             lstWorks.DataSource = null;
-            lstWorks.DataSource = theWorksList;
-            lblTotal.Text = Convert.ToString(theWorksList.GetTotalValue());
+            lstWorks.DataSource = _WorksList;
+            lblTotal.Text = Convert.ToString(_WorksList.GetTotalValue());
         }
 
-        public void SetDetails(string prName, string prSpeciality, string prPhone, byte prSortOrder,
-                               clsWorksList prWorksList, clsArtistList prArtistList)
+        public void updateForm()
         {
-            txtName.Text = prName;
-            txtSpeciality.Text = prSpeciality;
-            txtPhone.Text = prPhone;
-            theArtistList = prArtistList;
-            theWorksList = prWorksList;
-            sortOrder = prSortOrder;
-            UpdateDisplay();
+            txtName.Text = _Artist.ArtistName;
+            txtSpeciality.Text = _Artist.Speciality;
+            txtPhone.Text = _Artist.Phone;
+            //_ArtistList = _Artist.ArtistList;
+            _WorksList = _Artist.WorksList;
+             sortOrder = _WorksList.SortOrder;////this does not make sense...sortOrder instead of _SortOrder
         }
 
-        public void GetDetails(ref string prName, ref string prSpeciality, ref string prPhone, ref byte prSortOrder)
+        public void pushData()
         {
-            prName = txtName.Text;
-            prSpeciality = txtSpeciality.Text;
-            prPhone = txtPhone.Text;
-            prSortOrder = sortOrder;
+            _Artist.ArtistName = txtName.Text;
+            _Artist.Speciality = txtSpeciality.Text;
+            _Artist.Phone = txtPhone.Text;
+            sortOrder = _WorksList.SortOrder;////this does not make sense...sortOrder instead of _SortOrder should this still be hear..
+        }
+
+        public void SetDetails(clsArtist prArtist)
+        {
+            _Artist = prArtist;
+            updateForm();
+            updateDisplay();
+            ShowDialog();
+            
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            theWorksList.DeleteWork(lstWorks.SelectedIndex);
-            UpdateDisplay();
+            _WorksList.DeleteWork(lstWorks.SelectedIndex);
+            updateDisplay();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            theWorksList.AddWork();
-            UpdateDisplay();
+            _WorksList.AddWork();
+            updateDisplay();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             if (isValid())
             {
+                pushData();
                 DialogResult = DialogResult.OK;
             }
         }
@@ -81,9 +93,9 @@ namespace Version_1_C
         public virtual Boolean isValid()
         {
             if (txtName.Enabled && txtName.Text != "")
-                if (theArtistList.Contains(txtName.Text))
+                if (_Artist.IsDuplicate(txtName.Text))
                 {
-                    MessageBox.Show("Artist with that name already exists!");
+                    MessageBox.Show("Artist with that _ArtistName already exists!");
                     return false;
                 }
                 else
@@ -97,15 +109,15 @@ namespace Version_1_C
             int lcIndex = lstWorks.SelectedIndex;
             if (lcIndex >= 0)
             {
-                theWorksList.EditWork(lcIndex);
-                UpdateDisplay();
+                _WorksList.EditWork(lcIndex);
+                updateDisplay();
             }
         }
 
         private void rbByDate_CheckedChanged(object sender, EventArgs e)
         {
             sortOrder = Convert.ToByte(rbByDate.Checked);
-            UpdateDisplay();
+            updateDisplay();
         }
 
     }

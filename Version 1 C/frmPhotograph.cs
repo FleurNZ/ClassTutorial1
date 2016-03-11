@@ -13,7 +13,7 @@ namespace Version_1_C
 
         public frmPhotograph()
         {
-            InitializeComponent();
+            initializeComponent();/// this may break things have changed to lowercase i
         }
 
     }

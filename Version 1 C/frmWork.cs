@@ -13,7 +13,7 @@ namespace Version_1_C
 
         public frmWork()
         {
-            InitializeComponent();
+            InitializeComponent();/// have not changed to see what happens...
         }
 
         public void SetDetails(string prName, DateTime prDate, decimal prValue)
