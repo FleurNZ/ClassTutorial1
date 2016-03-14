@@ -25,7 +25,7 @@ namespace Version_1_C
             {
                 if (lcArtist.ArtistName() != "")//don't know what to do hear.
                 {
-                    Add(lcArtist.ArtistName(), lcArtist);//don't know what to do hear.
+                    Add(lcArtist._ArtistName(), lcArtist);//don't know what to do hear.
                     MessageBox.Show("Artist added!");
                 }
             }
@@ -53,7 +53,7 @@ namespace Version_1_C
                 System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
                     new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
 
-                lcFormatter.Serialize(lcFileStream, fileName);//removed _ArtistList
+                lcFormatter.Serialize(lcFileStream, this);//removed _ArtistList should this be fileName?? instead.
                 lcFileStream.Close();
             }
             catch (Exception e)
@@ -62,7 +62,7 @@ namespace Version_1_C
             }
         }
         
-        public static clsArtistList Retrieve()//is this right?
+        public static clsArtistList Retrieve()//correct
         {
 
             clsArtistList lcArtistList;//added this not sure if in right place.

@@ -19,7 +19,7 @@ namespace Version_1_C
            
         }
 
-        clsArtistList _ArtistList;  //same hear if I remove instants of _ArtistList others error.
+       clsArtistList _ArtistList;  //same hear if I remove instants of _ArtistList others error.
         
 
         private void updateDisplay()

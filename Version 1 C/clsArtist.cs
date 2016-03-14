@@ -31,7 +31,7 @@ namespace Version_1_C
 
             set
             {
-                _ArtistName = value;
+                _ArtistName = value;// this is where validation code can be added later.
             }
         }
 

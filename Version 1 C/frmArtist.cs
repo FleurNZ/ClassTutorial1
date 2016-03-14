@@ -19,7 +19,7 @@ namespace Version_1_C
         private clsWorksList _WorksList;
         private byte sortOrder; // 0 = Name, 1 = Date maybe this should be _SortOrder...
         //clsWorksList _SortOrder;// not sure if this is right.
-        private  clsArtist _Artist;//is this menat to be clsartist?
+        private  clsArtist _Artist;//is this meant to be clsartist?
 
        
         private void updateDisplay()
