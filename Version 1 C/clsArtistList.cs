@@ -1,17 +1,18 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Version_1_C
 {
     [Serializable()] 
-    public class clsArtistList : SortedList
+    public class clsArtistList : SortedList<string, clsArtist>
     {
         private const string fileName = "gallery.xml";
         public void EditArtist(string prKey)
         {
-            clsArtist lcArtist;
-            lcArtist = (clsArtist)this[prKey];
+            clsArtist lcArtist = new clsArtist(this);//this seems wrong.
+            //clsArtist lcArtist;
+           // lcArtist = (clsArtist)this[prKey];not needed with generic collections.
             if (lcArtist != null)
                 lcArtist.EditDetails();
             else
@@ -23,9 +24,9 @@ namespace Version_1_C
             clsArtist lcArtist = new clsArtist(this);
             try
             {
-                if (lcArtist.ArtistName() != "")//don't know what to do hear.
+                if (lcArtist.ArtistName != "")//don't know what to do hear.
                 {
-                    Add(lcArtist._ArtistName(), lcArtist);//don't know what to do hear.
+                    Add(lcArtist.ArtistName, lcArtist);//don't know what to do hear.
                     MessageBox.Show("Artist added!");
                 }
             }
@@ -40,7 +41,7 @@ namespace Version_1_C
             decimal lcTotal = 0;
             foreach (clsArtist lcArtist in Values)
             {
-                lcTotal += lcArtist._TotalValue();//don't know what to do hear.
+                lcTotal += lcArtist.TotalValue;
             }
             return lcTotal;
         }
@@ -50,8 +51,8 @@ namespace Version_1_C
             try
             {
                 System.IO.FileStream lcFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Create);
-                System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
-                    new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
+                System.Runtime.Serialization.Formatters.Binary.BinaryFormatter lcFormatter =//Soap.SoapFormatter lcFormatter =
+                    new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();//Soap.SoapFormatter();not valid with generics
 
                 lcFormatter.Serialize(lcFileStream, this);//removed _ArtistList should this be fileName?? instead.
                 lcFileStream.Close();
@@ -61,11 +62,12 @@ namespace Version_1_C
                 MessageBox.Show(e.Message, "File Save Error");
             }
         }
-        
+
+        // factory method
         public static clsArtistList Retrieve()//correct
         {
 
-            clsArtistList lcArtistList;//added this not sure if in right place.
+            clsArtistList lcArtistList;//added
             try
             {
 

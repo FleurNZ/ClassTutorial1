@@ -57,6 +57,7 @@ namespace Version_1_C
             _Artist.Speciality = txtSpeciality.Text;
             _Artist.Phone = txtPhone.Text;
             sortOrder = _WorksList.SortOrder;////this does not make sense...sortOrder instead of _SortOrder should this still be hear..
+            //DialogResult = DialogResult.OK;//nto sure if this should be hear..
         }
 
         public void SetDetails(clsArtist prArtist)
@@ -85,8 +86,8 @@ namespace Version_1_C
         {
             if (isValid())
             {
-                pushData();
-                DialogResult = DialogResult.OK;
+                pushData();//something wrong having to hit close twice for a new artist to be added.
+                DialogResult = DialogResult.OK;//first time through result is 1 second time through result is OK???? so shuts.
             }
         }
 
