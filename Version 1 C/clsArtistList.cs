@@ -72,8 +72,12 @@ namespace Version_1_C
             {
 
                 System.IO.FileStream lcFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Open);
+                /* Matthias: you must use the binary formatter for reading:
                 System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
                     new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
+                */
+                System.Runtime.Serialization.Formatters.Binary.BinaryFormatter lcFormatter =//Soap.SoapFormatter lcFormatter =
+                                    new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();//Soap.SoapFormatter();not valid with generics
 
                 lcArtistList = (clsArtistList)lcFormatter.Deserialize(lcFileStream);
                 //updateDisplay(); removed since there is now a factory method.

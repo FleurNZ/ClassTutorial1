@@ -100,11 +100,14 @@ namespace Version_1_C
         public void EditDetails()
         {
             _ArtistDialog.SetDetails(this);//(clsArtist)this[prkey]what do I do with this hear?
+            /*  Matthias: comment/delete the following lines (see #8h on the Task List)
             if (_ArtistDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                
+            */
                 _TotalValue = WorksList.GetTotalValue();
+            /*
             }
+            */
         }
 
         //public string GetKey()
