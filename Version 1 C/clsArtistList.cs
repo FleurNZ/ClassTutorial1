@@ -7,7 +7,7 @@ namespace Version_1_C
     [Serializable()] 
     public class clsArtistList : SortedList<string, clsArtist>
     {
-        private const string fileName = "gallery.xml";
+        private const string fileName = "gallery3.xml";
         public void EditArtist(string prKey)
         {
             clsArtist lcArtist = new clsArtist(this);//this seems wrong.
@@ -72,8 +72,8 @@ namespace Version_1_C
             {
 
                 System.IO.FileStream lcFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Open);
-                System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
-                    new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
+                System.Runtime.Serialization.Formatters.Binary.BinaryFormatter lcFormatter = //System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
+                    new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter(); //new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
 
                 lcArtistList = (clsArtistList)lcFormatter.Deserialize(lcFileStream);
                 //updateDisplay(); removed since there is now a factory method.

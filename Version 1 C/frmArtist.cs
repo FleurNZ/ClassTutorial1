@@ -60,7 +60,7 @@ namespace Version_1_C
             //DialogResult = DialogResult.OK;//nto sure if this should be hear..
         }
 
-        public void SetDetails(clsArtist prArtist)
+        public void SetDetails(clsArtist prArtist)///issue with the values within Artistlist relating to the specific artist not been transfered to _Artist.
         {
             _Artist = prArtist;
             updateForm();
