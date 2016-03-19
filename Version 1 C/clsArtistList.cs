@@ -54,7 +54,7 @@ namespace Version_1_C
                 System.Runtime.Serialization.Formatters.Binary.BinaryFormatter lcFormatter =//Soap.SoapFormatter lcFormatter =
                     new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();//Soap.SoapFormatter();not valid with generics
 
-                lcFormatter.Serialize(lcFileStream, this);//removed _ArtistList should this be fileName?? instead.
+                lcFormatter.Serialize(lcFileStream, this);//removed _ArtistList
                 lcFileStream.Close();
             }
             catch (Exception e)
