@@ -48,7 +48,7 @@ namespace Version_1_C
             txtPhone.Text = _Artist.Phone;
             //_ArtistList = _Artist.ArtistList;
             _WorksList = _Artist.WorksList;
-             sortOrder = _WorksList.SortOrder;////this does not make sense...sortOrder instead of _SortOrder
+             //sortOrder = _WorksList.SortOrder;////this does not make sense...sortOrder instead of _SortOrder
         }
 
         public void pushData()
@@ -56,7 +56,7 @@ namespace Version_1_C
             _Artist.ArtistName = txtName.Text;
             _Artist.Speciality = txtSpeciality.Text;
             _Artist.Phone = txtPhone.Text;
-            sortOrder = _WorksList.SortOrder;////this does not make sense...sortOrder instead of _SortOrder should this still be hear..
+            //sortOrder = _WorksList.SortOrder;////this does not make sense...sortOrder instead of _SortOrder should this still be hear..
             //DialogResult = DialogResult.OK;//nto sure if this should be hear..
         }
 

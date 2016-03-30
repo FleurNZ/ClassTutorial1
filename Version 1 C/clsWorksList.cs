@@ -1,28 +1,28 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Version_1_C
 {
     [Serializable()] 
-    public class clsWorksList : ArrayList
+    public class clsWorksList : List<clsWork>//ArrayList
     {
         private static clsNameComparer _NameComparer = new clsNameComparer();//changed these two should I have?
         private static clsDateComparer _DateComparer = new clsDateComparer();
-        private static byte _SortOrder;//is this right?
+       // private static byte _SortOrder;//is this right?
 
-        public byte SortOrder
-        {
-            get
-            {
-                return _SortOrder;
-            }
+        //public byte SortOrder
+        //{
+        //    get
+        //    {
+        //        return _SortOrder;
+        //    }
 
-            set
-            {
-                _SortOrder = value;
-            }
-        }
+        //    set
+        //    {
+        //        _SortOrder = value;
+        //    }
+        //}
 
         public void AddWork()
         {

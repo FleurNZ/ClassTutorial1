@@ -10,9 +10,9 @@ namespace Version_1_C
         private const string fileName = "gallery3.xml";
         public void EditArtist(string prKey)
         {
-            clsArtist lcArtist = new clsArtist(this);//this seems wrong.
+            clsArtist lcArtist; // = new clsArtist(this);//this seems wrong.
             //clsArtist lcArtist;
-           // lcArtist = (clsArtist)this[prKey];not needed with generic collections.
+            lcArtist = (clsArtist)this[prKey]; // not needed with generic collections.
             if (lcArtist != null)
                 lcArtist.EditDetails();
             else
@@ -83,7 +83,7 @@ namespace Version_1_C
             catch (Exception e)
             {
             
-               
+               //need to move to form using catch exception
                 MessageBox.Show(e.Message, "File Retrieve Error");
                 lcArtistList = new clsArtistList();///remember its l not one.
                
