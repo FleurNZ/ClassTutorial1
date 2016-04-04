@@ -51,10 +51,14 @@ namespace Version_1_C
                 _Type = value;
             }
         }
+        
+
 
         public override void EditDetails()
         {
-
+            //where ever there is new used you will get an error once converted to singleton so you need to correct.
+            //singleton does not need this code change too
+            //frmPhtograph.Instance.SetDetails(this);
             if (_PhotographDialog == null)
                 _PhotographDialog = new frmPhotograph();
             _PhotographDialog.SetDetails(this);

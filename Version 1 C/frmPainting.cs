@@ -8,12 +8,14 @@ using System.Windows.Forms;
 
 namespace Version_1_C
 {
+    //change to sealed class step 3 singleton
     public partial class frmPainting : Version_1_C.frmWork
     {
 
-        
-       
 
+
+        //change to private for singleton step one
+        //private static readonly frmPhotograph Instance = new frmPhotograph;
         public frmPainting()
         {
             InitializeComponent();

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Version_1_C
 {
+    //changed the class to sealed step 3
+    //sealed class clsNameComparer : IComparer<clsWork>
+
     class clsNameComparer : IComparer<clsWork>
     {
         public int Compare(clsWork x, clsWork y)//object changes to clsWork
@@ -16,7 +19,10 @@ namespace Version_1_C
 
             return lcNameX.CompareTo(lcNameY);
         }
-
-        
+        //singleton
+        //step 1
+        //private clsNameComparer() {}
+        //step 2
+        //public static readonly clsNameComparer Instance = new clsNameComparer;
     }
 }

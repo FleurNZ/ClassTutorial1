@@ -7,6 +7,9 @@ namespace Version_1_C
     [Serializable()] 
     public class clsWorksList : List<clsWork>//ArrayList
     {
+        /// <summary>
+        /// these will fail once you implement singleton
+        /// </summary>
         private static clsNameComparer _NameComparer = new clsNameComparer();//changed these two should I have?
         private static clsDateComparer _DateComparer = new clsDateComparer();
        // private static byte _SortOrder;//is this right?
@@ -74,6 +77,9 @@ namespace Version_1_C
     
         public void SortByDate()
         {
+            //lasy and thread safe step 4.
+            //Sort(clsDateComparer.Instance);
+            //_SortOrder = 1;
             Sort(_DateComparer);
         }
     }

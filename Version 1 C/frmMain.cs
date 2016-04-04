@@ -18,6 +18,8 @@ namespace Version_1_C
             InitializeComponent();
            
         }
+        //singleton frm main a bit different  you need to encapsulate field to get a public variable this is due to the optimiser.
+        //private static readonly frmMain_Instance = new frmMain.Instance();
 
        clsArtistList _ArtistList;  
         
@@ -73,9 +75,19 @@ namespace Version_1_C
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            //try
+            //{
+                _ArtistList = clsArtistList.Retrieve();
+            //}
+
+            //catch (Exception e)
+            //{
+            //    MessageBox.Show(e.Message, "File Retrieve Error");
+            //}
             
-            _ArtistList = clsArtistList.Retrieve();
             updateDisplay();
         }
+
+      
     }
 }
